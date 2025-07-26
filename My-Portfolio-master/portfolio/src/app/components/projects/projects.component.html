@@ -1,0 +1,22 @@
+<section id="projects" class="project-section" data-aos="zoom-in">
+  <h2 class="project-title">Projects</h2>
+
+  <div class="project-container">
+    <button class="arrow-button" (click)="prevProject()">&#x25C0;</button>
+
+    <div class="project-card active">
+      <h3 class="project-company">{{ projects[currentIndex].title }}</h3>
+      <p class="project-duration"><i>{{ projects[currentIndex].techStack }}</i></p>
+      <ul class="project-details">
+        <li *ngFor="let detail of projects[currentIndex].details">{{ detail }}</li>
+      </ul>
+      <a class="view-button" [href]="projects[currentIndex].link" target="_blank" rel="noopener noreferrer">
+        View
+      </a>
+
+
+    </div>
+
+    <button class="arrow-button" (click)="nextProject()">&#x25B6;</button>
+  </div>
+</section>

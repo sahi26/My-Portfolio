@@ -1,0 +1,116 @@
+.project-section {
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.project-title {
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: #08897c;
+  margin-bottom: 2rem;
+}
+
+.project-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-card {
+  position: relative;
+  /* Add this */
+  background-color: transparent;
+  width: 480px;
+  height: 300px;
+  padding: 1rem;
+  border-radius: 1rem;
+  transition: opacity 0.5s ease;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+
+
+.project-card.active {
+  display: block;
+}
+
+.project-company {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #08897c;
+  margin-bottom: 0.5rem;
+}
+
+.project-duration {
+  font-style: italic;
+  color: #08897c;
+  margin-bottom: 1rem;
+}
+
+.project-details {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto 1rem;
+  max-width: 600px;
+  text-align: left;
+}
+
+.project-details li {
+  color: #08897c;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  padding-left: 1.2rem;
+  position: relative;
+  font-weight: 500;
+}
+
+.project-details li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #08897c;
+}
+
+.arrow-button {
+  background-color: #08897c;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 230, 195, 0.5);
+}
+
+.view-button {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #08897c;
+  color: #000;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.view-button:hover {
+  background-color: #00bfa6;
+  color: #fff;
+}
