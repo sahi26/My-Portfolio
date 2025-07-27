@@ -78,7 +78,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   startAutoSlide() {
     this.slideInterval = setInterval(() => {
       this.nextProject();
-    }, 3000); // Slide every 5 seconds (5000 ms)
+    }, 5000);
   }
 
   prevProject() {

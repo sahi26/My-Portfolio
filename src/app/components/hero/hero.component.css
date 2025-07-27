@@ -16,13 +16,19 @@ body {
 }
 
 /* ===================== HERO SECTION ===================== */
+
 .hero {
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 100px 2rem 60px;
   background-color: var(--bg-color);
+  overflow: hidden;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
+
+
 
 .hero-content {
   display: flex;
@@ -32,7 +38,9 @@ body {
   width: 100%;
   max-width: 1200px;
   gap: 40px;
+  overflow: visible;
 }
+
 
 /* Left Content */
 .hero-text {

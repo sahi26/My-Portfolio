@@ -48,7 +48,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
 
     this.autoSlideInterval = setInterval(() => {
       this.nextSlide();
-    }, 3000);
+    }, 6000);
   }
 
   ngOnDestroy(): void {
