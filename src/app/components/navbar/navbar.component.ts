@@ -42,7 +42,7 @@ export class NavbarComponent {
       const section = document.getElementById(sectionId);
       if (section) {
         const rect = section.getBoundingClientRect();
-        if (rect.top <= 70 && rect.bottom > 70) {
+        if (rect.top <= 100 && rect.bottom > 100) {
           currentSection = sectionId;
         }
       }
