@@ -7,29 +7,27 @@ import { Component, HostListener } from '@angular/core';
 })
 export class NavbarComponent {
   isDarkMode = true;
-  activeSection = 'home';
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const sections = ['hero', 'about', 'education', 'projects', 'skills', 'experience', 'contact'];
-
-    for (let sec of sections) {
-      const el = document.getElementById(sec);
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= 150 && rect.bottom >= 150) {
-          this.activeSection = sec;
-          break;
-        }
-      }
-    }
-  }
+  menuOpen = false;
 
   toggleTheme() {
     this.isDarkMode = !this.isDarkMode;
     document.body.classList.toggle('dark-mode', this.isDarkMode);
   }
 
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 
+  closeMenu() {
+    this.menuOpen = false;
+  }
 
+  // Close menu when clicking outside
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.navbar') && this.menuOpen) {
+      this.menuOpen = false;
+    }
+  }
 }

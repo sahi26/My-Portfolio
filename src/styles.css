@@ -60,15 +60,14 @@ body.dark-mode .nav-links li a {
 section {
   min-height: 100vh;
   padding: 80px 20px 120px;
-  /* bottom padding added to avoid fixed footer overlap */
+  /* you can adjust bottom padding if needed */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   scroll-snap-align: start;
-  scroll-margin-top: 100px;
-  /* prevent hiding behind navbar */
+  scroll-margin-top: 80px;
+  /* default for desktop */
 }
 
 section:target {
@@ -253,8 +252,11 @@ body {
   scroll-snap-type: none;
 }
 
+
+
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
+
   .navbar {
     flex-direction: column;
     padding: 10px 20px;

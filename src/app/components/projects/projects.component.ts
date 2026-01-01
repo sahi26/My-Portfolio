@@ -1,91 +1,70 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css']
 })
-export class ProjectsComponent implements OnInit, OnDestroy {
+export class ProjectsComponent implements OnInit {
+
   projects = [
     {
       title: 'RSSI-Based Proximity Alert & Emergency Vehicle Prioritization',
-      techStack: 'ESP8266, Arduino Uno, ZigBee, Bluetooth, IP Detection, L298N',
-      details: [
-        'Developed an autonomous car that identifies emergency vehicles using RSSI signals and IP detection.',
-        'Integrated adaptive cruise control, V2V communication, and automated traffic signal control.'
+      tech: 'ESP8266, Arduino, ZigBee, Bluetooth',
+      points: [
+        'Designed an autonomous vehicle that detects emergency vehicles using RSSI signals',
+        'Implemented V2V communication and adaptive cruise control',
+        'Automated traffic signal prioritization for emergency response'
       ],
       link: 'assets/rssi.mp4'
     },
     {
       title: 'Smart Hotel Booking System',
-      techStack: 'SpringBoot-JAVA, Angular-TypeScript, MySQL',
-      details: [
-        'Web application for browsing, filtering, and booking hotels with real-time availability.',
-        'Included customer reviews and dynamic pricing based on filters.'
+      tech: 'Spring Boot, Angular, MySQL',
+      points: [
+        'Developed a full-stack hotel booking platform',
+        'Implemented real-time availability, filters, and pricing',
+        'Designed REST APIs and responsive UI'
       ],
       link: 'https://github.com/sahi26/SmartHotelBookingSystem'
     },
     {
-      title: 'BookHub Website',
-      techStack: 'Java, Spring Boot, HTML, CSS, JavaScript, MySQL',
-      details: [
-        'An online bookstore for book listings management.',
-        'Developed REST APIs, secure admin features, and responsive UI.'
+      title: 'BookHub – Online Bookstore',
+      tech: 'Java, Spring Boot, REST API, MySQL',
+      points: [
+        'Built RESTful APIs for book and order management',
+        'Implemented secure admin and user roles',
+        'Focused on scalable backend design'
       ],
       link: 'assets/bookstore.mp4'
     },
     {
-      title: 'Audio Classification in MATLAB',
-      techStack: 'MATLAB, KNN Algorithm',
-      details: [
-        'Implemented KNN to classify audio signals based on extracted feature vectors.'
-      ],
-      link: 'https://github.com/sahi26/knn'
-    },
-    {
-      title: 'Elso Car - Solar cum Electric Car',
-      techStack: 'Embedded C, Arduino, Sensors',
-      details: [
-        'Dual-mode energy system using solar and battery.',
-        'Automatic daylight detection and mode switching.',
-        'Obstacle detection for improved safety.'
+      title: 'Elso Car – Solar cum Electric Vehicle',
+      tech: 'Embedded C, Arduino, Sensors',
+      points: [
+        'Designed a dual-mode solar and battery-powered vehicle',
+        'Implemented daylight-based mode switching',
+        'Added obstacle detection for safety'
       ],
       link: 'assets/elso.mp4'
     },
     {
-      title: 'Shopline - E-commerce Website',
-      techStack: 'HTML, CSS, JavaScript',
-      details: [
-        'Developed a responsive and user-friendly e-commerce platform.',
-        'Implemented shopping cart, product listing, and checkout flow.',
-        'Enhanced UI with clean design and animations.'
+      title: 'Audio Classification using KNN',
+      tech: 'MATLAB, Machine Learning',
+      points: [
+        'Implemented KNN algorithm for audio classification',
+        'Extracted and analyzed feature vectors'
       ],
-      link: 'assets/shopline.mp4'
+      link: 'https://github.com/sahi26/knn'
     }
   ];
 
-  currentIndex = 0;
-  private slideInterval: any;
-
-  ngOnInit() {
-    this.startAutoSlide();
-  }
-
-  ngOnDestroy() {
-    clearInterval(this.slideInterval);
-  }
-
-  startAutoSlide() {
-    this.slideInterval = setInterval(() => {
-      this.nextProject();
-    }, 5000);
-  }
-
-  prevProject() {
-    this.currentIndex = (this.currentIndex - 1 + this.projects.length) % this.projects.length;
-  }
-
-  nextProject() {
-    this.currentIndex = (this.currentIndex + 1) % this.projects.length;
+  ngOnInit(): void {
+    AOS.init({
+      duration: 700,
+      easing: 'ease-in-out',
+      once: true
+    });
   }
 }

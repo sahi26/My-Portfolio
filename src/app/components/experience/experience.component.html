@@ -1,27 +1,21 @@
 <section class="experience-wrapper" id="experience">
   <h2 class="section-title" data-aos="fade-up">Experience</h2>
 
-  <div class="experience-container">
-    <button class="arrow left" (click)="prevSlide()">
-      <i class="fas fa-chevron-left"></i>
-    </button>
+  <div class="experience-list">
+    <div class="experience-card" *ngFor="let exp of experiences; let i = index" data-aos="fade-up"
+      [attr.data-aos-delay]="i * 150">
+      <h3 class="role">{{ exp.role }}</h3>
+      <h4 class="company">{{ exp.company }}</h4>
 
-    <div class="experience-card">
-      <h2>{{ experiences[currentIndex].role }}</h2>
-      <h3>{{ experiences[currentIndex].company }}</h3>
-      <p class="duration-location">
-        {{ experiences[currentIndex].duration }} • {{ experiences[currentIndex].location }}
+      <p class="meta">
+        {{ exp.duration }} • {{ exp.location }}
       </p>
 
       <ul>
-        <li *ngFor="let item of experiences[currentIndex].responsibilities">
+        <li *ngFor="let item of exp.responsibilities">
           {{ item }}
         </li>
       </ul>
     </div>
-
-    <button class="arrow right" (click)="nextSlide()">
-      <i class="fas fa-chevron-right"></i>
-    </button>
   </div>
 </section>

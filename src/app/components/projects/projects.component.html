@@ -1,22 +1,23 @@
-<section id="projects" class="project-section" data-aos="zoom-in">
-  <h2 class="project-title">Projects</h2>
+<section class="experience-wrapper" id="projects">
+  <h2 class="section-title" data-aos="fade-up">Projects</h2>
 
-  <div class="project-container">
-    <button class="arrow-button" (click)="prevProject()">&#x25C0;</button>
+  <div class="experience-container" *ngFor="let project of projects" data-aos="fade-up">
+    <div class="experience-card">
+      <h2>{{ project.title }}</h2>
+      <div class="tech-stack">
+        <span *ngFor="let techItem of project.tech.split(',')">{{ techItem.trim() }}</span>
+      </div>
 
-    <div class="project-card active">
-      <h3 class="project-company">{{ projects[currentIndex].title }}</h3>
-      <p class="project-duration"><i>{{ projects[currentIndex].techStack }}</i></p>
-      <ul class="project-details">
-        <li *ngFor="let detail of projects[currentIndex].details">{{ detail }}</li>
+
+      <ul>
+        <li *ngFor="let point of project.points">
+          {{ point }}
+        </li>
       </ul>
-      <a class="view-button" [href]="projects[currentIndex].link" target="_blank" rel="noopener noreferrer">
-        View
+
+      <a class="view-btn" [href]="project.link" target="_blank" rel="noopener noreferrer">
+        View Project
       </a>
-
-
     </div>
-
-    <button class="arrow-button" (click)="nextProject()">&#x25B6;</button>
   </div>
 </section>

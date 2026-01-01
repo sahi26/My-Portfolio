@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
 
 @Component({
@@ -6,60 +6,39 @@ import * as AOS from 'aos';
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.css']
 })
-export class ExperienceComponent implements OnInit, OnDestroy {
+export class ExperienceComponent implements OnInit {
+
   experiences = [
     {
       role: 'Java Full Stack Developer Intern',
       company: 'Cognizant',
-      duration: 'April 2025 – July 2025 (3 months)',
+      duration: 'April 2025 – July 2025',
       location: 'Hyderabad, India',
       responsibilities: [
-        'Worked on a project as a team',
-        'Worked on Spring Boot & REST API integrations',
-        'Built responsive UI with Angular',
-        'Collaborated in Agile environment and Git'
+        'Worked in an Agile team-based environment',
+        'Developed REST APIs using Spring Boot',
+        'Built responsive UI using Angular',
+        'Used Git for version control and collaboration'
       ]
     },
     {
-      role: 'Embedded System Intern',
+      role: 'Embedded Systems Intern',
       company: 'PANTECH SOLUTIONS',
-      duration: 'May 2024 – June 2024 (2 months)',
+      duration: 'May 2024 – June 2024',
       location: 'Chennai, India',
       responsibilities: [
         'Worked with ESP32 microcontroller',
-        'Interfaced various sensors and modules',
+        'Interfaced sensors and communication modules',
         'Developed basic IoT prototypes',
-        'Gained experience in embedded C programming'
+        'Hands-on experience with Embedded C'
       ]
     }
   ];
 
-  currentIndex: number = 0;
-  autoSlideInterval: any;
-
-  constructor() { }
-
   ngOnInit(): void {
     AOS.init({
       duration: 800,
-      easing: 'ease-in-out',
       once: true
     });
-
-    this.autoSlideInterval = setInterval(() => {
-      this.nextSlide();
-    }, 6000);
-  }
-
-  ngOnDestroy(): void {
-    clearInterval(this.autoSlideInterval);
-  }
-
-  nextSlide(): void {
-    this.currentIndex = (this.currentIndex + 1) % this.experiences.length;
-  }
-
-  prevSlide(): void {
-    this.currentIndex = (this.currentIndex - 1 + this.experiences.length) % this.experiences.length;
   }
 }

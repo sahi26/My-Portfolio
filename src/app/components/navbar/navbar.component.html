@@ -1,17 +1,26 @@
 <nav class="navbar">
   <div class="logo"></div>
-  <ul class="nav-links">
-    <li><a [class.active]="activeSection === 'home'" href="#hero">Home</a></li>
-    <li><a [class.active]="activeSection === 'experience'" href="#experience">Experience</a></li>
-    <li><a [class.active]="activeSection === 'skills'" href="#skills">Skills</a></li>
-    <li><a [class.active]="activeSection === 'projects'" href="#projects">Projects</a></li>
-    <li><a [class.active]="activeSection === 'education'" href="#education">Education</a></li>
-    <li><a [class.active]="activeSection === 'contact'" href="#contact">Contact</a></li>
+
+  <!-- Hamburger -->
+  <button class="hamburger" (click)="toggleMenu()" aria-label="Menu">
+    <i class="fa-solid" [ngClass]="menuOpen ? 'fa-xmark' : 'fa-bars'"></i>
+  </button>
+
+  <!-- Navigation Links -->
+  <ul class="nav-links" [class.open]="menuOpen">
+    <li><a href="#hero" (click)="closeMenu()">Home</a></li>
+    <li><a href="#experience" (click)="closeMenu()">Experience</a></li>
+    <li><a href="#skills" (click)="closeMenu()">Skills</a></li>
+    <li><a href="#projects" (click)="closeMenu()">Projects</a></li>
+    <li><a href="#education" (click)="closeMenu()">Education</a></li>
+    <li><a href="#contact" (click)="closeMenu()">Contact</a></li>
+
+    <li class="divider"></li>
+
     <li>
       <button class="theme-toggle" (click)="toggleTheme()">
-        {{ isDarkMode ? '🌙' : '☀️' }}
+        {{ isDarkMode ? '☀️' : '🌙' }}
       </button>
-
     </li>
   </ul>
 </nav>

@@ -1,113 +1,151 @@
-/* =====================
-   NAVBAR BASE
-===================== */
+:root {
+  --theme-green: #08897c;
+}
+
+/* ================= NAVBAR ================= */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: var(--nav-bg, #ffffff);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  min-height: 60px;
+  justify-content: space-between;
   padding: 1rem 2rem;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  z-index: 10000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
-  flex-wrap: nowrap;
-  overflow-x: auto;
 }
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--primary-color);
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  flex-direction: row;
-  white-space: nowrap;
-}
-
-.nav-links li a {
-  color: #00695c;
-  text-decoration: none;
-  font-weight: 700;
-  padding: 8px 4px;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-/* Active Link Highlight */
-.nav-links li a.active::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 100%;
-  height: 2px;
-  background-color: #66e5d6;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.nav-links li a:hover {
-  color: #00897b;
-}
-
-.theme-toggle {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: transform 0.1s ease;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.1);
-}
-
-/* =====================
-   DARK MODE SUPPORT
-===================== */
 body.dark-mode .navbar {
   background-color: #1e1e1e;
 }
 
+body.dark-mode .logo {
+  color: #fff;
+}
+
+/* ================= LINKS ================= */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #08897c;
+  transition: color 0.3s;
+}
+
 body.dark-mode .nav-links li a {
-  color: var(--dark-text);
+  color: #fff;
 }
 
-body.dark-mode .nav-links li a.active::after {
-  background-color: var(--primary-color);
+.nav-links li a:hover {
+  color: #00695c;
 }
 
-/* =====================
-   RESPONSIVE NAVBAR
-=====================*/
+/* ================= HAMBURGER ================= */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.7rem;
+  cursor: pointer;
+  color: #08897c;
+  transition: color 0.3s;
+}
+
+.hamburger i {
+  color: inherit;
+}
+
+body.dark-mode .hamburger {
+  color: #fff;
+}
+
+/* ================= THEME BUTTON ================= */
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #08897c;
+  transition: color 0.3s;
+}
+
+body.dark-mode .theme-toggle {
+  color: #fff;
+}
+
+/* ================= MOBILE MENU (Side Drawer) ================= */
 @media (max-width: 768px) {
-  .navbar {
-
-    align-items: flex-start;
-    padding: 1rem;
-  }
-
   .nav-links {
-    gap: 1rem;
-    width: 100%;
-    padding-top: 1rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 200px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background-color: rgba(0, 0, 0, 0.95);
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1000;
+    /* lowered below hamburger */
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+    border-left: 1px solid #333;
   }
 
-  .nav-links li {
-    width: 100%;
+  .nav-links.open {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .hamburger {
+    display: block;
+    position: fixed;
+    /* fixed keeps it visible even when menu scrolls */
+    top: 1rem;
+    right: 1.5rem;
+    z-index: 10001;
+    /* HIGHER than nav-links */
+    font-size: 1.7rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #08897c;
+    transition: color 0.3s;
+  }
+
+  .hamburger i {
+    color: inherit;
+  }
+
+  body.dark-mode .hamburger {
+    color: #fff;
   }
 
   .nav-links li a {
-    display: block;
+    color: #fff;
+    font-size: 1.2rem;
+  }
+
+  .divider {
+    border-top: 1px solid #ffffff;
     width: 100%;
-    padding: 0.5rem 0;
+  }
+
+  .theme-toggle {
+    font-size: 1.5rem;
+    color: #fff;
   }
 }
