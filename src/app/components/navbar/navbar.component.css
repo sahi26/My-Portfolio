@@ -1,7 +1,3 @@
-:root {
-  --theme-green: #08897c;
-}
-
 /* ================= NAVBAR ================= */
 .navbar {
   position: fixed;
@@ -23,6 +19,12 @@ body.dark-mode .navbar {
   background-color: #1e1e1e;
 }
 
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #08897c;
+}
+
 body.dark-mode .logo {
   color: #fff;
 }
@@ -39,10 +41,28 @@ body.dark-mode .logo {
   font-weight: 700;
   color: #08897c;
   transition: color 0.3s;
+  position: relative;
 }
 
-body.dark-mode .nav-links li a {
-  color: #fff;
+/* Active Link Styling with underline */
+.nav-links li a.active {
+  color: #08897c;
+}
+
+.nav-links li a.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #08897c;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .nav-links li a.active::after {
+  background-color: #08897c;
 }
 
 .nav-links li a:hover {
@@ -100,7 +120,6 @@ body.dark-mode .theme-toggle {
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
     z-index: 1000;
-    /* lowered below hamburger */
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
     border-left: 1px solid #333;
   }
@@ -113,11 +132,9 @@ body.dark-mode .theme-toggle {
   .hamburger {
     display: block;
     position: fixed;
-    /* fixed keeps it visible even when menu scrolls */
     top: 1rem;
     right: 1.5rem;
     z-index: 10001;
-    /* HIGHER than nav-links */
     font-size: 1.7rem;
     background: none;
     border: none;

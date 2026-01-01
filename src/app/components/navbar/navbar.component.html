@@ -8,12 +8,24 @@
 
   <!-- Navigation Links -->
   <ul class="nav-links" [class.open]="menuOpen">
-    <li><a href="#hero" (click)="closeMenu()">Home</a></li>
-    <li><a href="#experience" (click)="closeMenu()">Experience</a></li>
-    <li><a href="#skills" (click)="closeMenu()">Skills</a></li>
-    <li><a href="#projects" (click)="closeMenu()">Projects</a></li>
-    <li><a href="#education" (click)="closeMenu()">Education</a></li>
-    <li><a href="#contact" (click)="closeMenu()">Contact</a></li>
+    <li>
+      <a href="#hero" (click)="closeMenu()" [class.active]="activeSection === 'hero'">Home</a>
+    </li>
+    <li>
+      <a href="#experience" (click)="closeMenu()" [class.active]="activeSection === 'experience'">Experience</a>
+    </li>
+    <li>
+      <a href="#skills" (click)="closeMenu()" [class.active]="activeSection === 'skills'">Skills</a>
+    </li>
+    <li>
+      <a href="#projects" (click)="closeMenu()" [class.active]="activeSection === 'projects'">Projects</a>
+    </li>
+    <li>
+      <a href="#education" (click)="closeMenu()" [class.active]="activeSection === 'education'">Education</a>
+    </li>
+    <li>
+      <a href="#contact" (click)="closeMenu()" [class.active]="activeSection === 'contact'">Contact</a>
+    </li>
 
     <li class="divider"></li>
 

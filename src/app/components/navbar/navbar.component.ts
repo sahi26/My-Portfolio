@@ -8,6 +8,7 @@ import { Component, HostListener } from '@angular/core';
 export class NavbarComponent {
   isDarkMode = true;
   menuOpen = false;
+  activeSection: string = 'hero'; // default active section
 
   toggleTheme() {
     this.isDarkMode = !this.isDarkMode;
@@ -29,5 +30,24 @@ export class NavbarComponent {
     if (!target.closest('.navbar') && this.menuOpen) {
       this.menuOpen = false;
     }
+  }
+
+  // Detect scroll and set active section
+  @HostListener('window:scroll', [])
+  onScroll() {
+    const sections = ['hero', 'experience', 'skills', 'projects', 'education', 'contact'];
+    let currentSection = 'hero';
+
+    sections.forEach(sectionId => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 70 && rect.bottom > 70) {
+          currentSection = sectionId;
+        }
+      }
+    });
+
+    this.activeSection = currentSection;
   }
 }
