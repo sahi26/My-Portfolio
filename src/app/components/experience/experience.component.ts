@@ -10,6 +10,18 @@ export class ExperienceComponent implements OnInit {
 
   experiences = [
     {
+      role: 'Angular Developer',
+      company: 'Cognizant',
+      duration: 'July 2025 – Present',
+      location: 'Chennai, India',
+      responsibilities: [
+        'Develop responsive and dynamic web applications using Angular',
+        'Implement reusable UI components and optimize front-end performance',
+        'Integrate REST APIs in collaboration with backend team',
+        'Work in an Agile team environment using Git for version control and collaboration'
+      ]
+    },
+    {
       role: 'Java Full Stack Developer Intern',
       company: 'Cognizant',
       duration: 'April 2025 – July 2025',
